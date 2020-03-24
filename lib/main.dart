@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+// componants
+import 'package:flutterdesign/components/products.dart';
+import 'package:flutterdesign/components/horizental_listeview.dart';
 void main() {
   runApp(
       MaterialApp(
@@ -17,26 +20,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    Widget view = new Container(
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(50.0),
-          bottomRight: Radius.circular(50.0)
-        ),
-        color: Colors.blue,
-      ),
-    );
 
     Widget image_carousel = new Container(
       height: 200.0,
-      padding: EdgeInsets.only(
-        top: 1,
-      ),
-      margin: EdgeInsets.only(
-        right: 15,
-        left: 15,
-      ),
+
       child: new Carousel(
         boxFit: BoxFit.cover,
         images: [
@@ -145,8 +132,21 @@ class _HomePageState extends State<HomePage> {
       ),
       body: new ListView(
         children: <Widget>[
-          view,
-          image_carousel
+          image_carousel,
+          new Padding(padding: const EdgeInsets.all(10.0),
+          child: Text('Categoties', style: TextStyle(fontWeight: FontWeight.bold),),
+          ),
+          // Horizental listeView for Categories
+          Horizental_ListView(),
+
+          new Padding(padding: const EdgeInsets.all(10.0),
+            child: Text('Recent Product ', style: TextStyle(fontWeight: FontWeight.bold),),
+          ),
+          // GridView Layout
+          Container(
+            height: 320.0,
+            child: Products()
+          ),
         ],
 
       ),
